@@ -7,13 +7,13 @@ import kotlinx.serialization.Serializable
 @Parcelize
 @Serializable
 data class Book (
-    val title: String?,
-    val authors: List<String?>,
-    val publisher: String? = null,
-    val publishedDate: String? = null,
-    val description: String? = null,
+    val title: String? = "-",
+    val authors: List<String?> = listOf<String>("-"),
+    val publisher: String? = "-",
+    val publishedDate: String? = "-",
+    val description: String? = "-",
     val pageCount: Int? = null,
-    val previewLink: String? = null,
+    val previewLink: String? = "-",
     val imageLinks: ImageLink? = null,
 ): Parcelable {
     @Parcelize

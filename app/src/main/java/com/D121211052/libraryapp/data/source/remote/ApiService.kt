@@ -10,7 +10,7 @@ interface ApiService {
         @Query("printType") printType: String = "books",
         @Query("q") q: String = "a",
         @Query("projection") projection: String = "lite",
-        @Query("maxResults") maxREsults: Int = 20,
+        @Query("maxResults") maxREsults: Int = 40,
         @Query("key") key: String = "AIzaSyArOtOpSfL9p0trT87LUlpoc7dGci3Vjd4",
     ): GetBooksResponse
 }
