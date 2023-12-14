@@ -24,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextIndent
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,6 +54,21 @@ class DetailActivity : ComponentActivity() {
     }
 
     @Composable
+    fun DetailInfo(label: String, text: String? = "-" ) {
+        Text(
+            text = label,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "\t\t\t\t${text}",
+            fontSize = 14.sp,
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+    }
+
+    @Composable
     fun BookDetail() {
         Column(
             modifier = Modifier
@@ -61,7 +77,9 @@ class DetailActivity : ComponentActivity() {
                 .verticalScroll(rememberScrollState()),
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth().padding(top = 50.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 50.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
 
@@ -87,23 +105,12 @@ class DetailActivity : ComponentActivity() {
                 )
             }
             Spacer(modifier = Modifier.height(70.dp))
-            Text(
-                text = "Author: ${selectedBook?.authors?.joinToString(", ")}",
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "Release Date: ${selectedBook?.previewLink}",
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Medium
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-//            Text(
-//                text = "Description: ${selectedBook?.title}",
-//                fontSize = 14.sp,
-//                fontWeight = FontWeight.Medium
-//            )
+            DetailInfo(label = "Author", text = selectedBook?.authors?.joinToString(", "))
+            DetailInfo(label = "Publisher", text = selectedBook?.publisher)
+            DetailInfo(label = "Published Date", text = selectedBook?.publishedDate)
+            DetailInfo(label = "Page Count", text = selectedBook?.pageCount.toString())
+            DetailInfo(label = "Preview Link", text = selectedBook?.previewLink)
+            DetailInfo(label = "Description", text = selectedBook?.description)
         }
     }
 }

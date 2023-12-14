@@ -9,12 +9,12 @@ import kotlinx.serialization.Serializable
 data class Book (
     val title: String?,
     val authors: List<String?>,
-//    val publisher: String?,
-//    val publishedDate: String?,
-//    val description: String?,
-//    val pageCount: Int?,
-    val previewLink: String?,
-    val imageLinks: ImageLink?,
+    val publisher: String? = null,
+    val publishedDate: String? = null,
+    val description: String? = null,
+    val pageCount: Int? = null,
+    val previewLink: String? = null,
+    val imageLinks: ImageLink? = null,
 ): Parcelable {
     @Parcelize
     @Serializable
